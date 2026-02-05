@@ -18,8 +18,8 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # -------- EMAIL CONFIG --------
-SENDER_EMAIL = "chinthana10ap@gmail.com"
-SENDER_PASSWORD = "tzesnljdpdkurlru"
+SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
+SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD")
 
 COMPANY_NAME = "ABC Technologies"
 JOB_TITLE = "Software Developer Intern"
