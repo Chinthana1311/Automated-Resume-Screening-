@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="card">
+    <h2>Student Registration</h2>
+    <p>Upload your resume for screening</p>
+
+    <form method="post" enctype="multipart/form-data">
+
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Enter your full name" required>
+
+        <!-- Row for Email only -->
+        <div class="row">
+            <div class="col">
+                <label>Email ID</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+            </div>
+        </div>
+
+        <label>Education</label>
+        <input type="text" name="education" placeholder="Eg: B.Tech CSE" required>
+
+        <label>Year of Passing</label>
+        <input type="text" name="year" placeholder="Eg: 2025" required>
+
+        <label>Resume (PDF)</label>
+        <input type="file" name="resume" accept=".pdf" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

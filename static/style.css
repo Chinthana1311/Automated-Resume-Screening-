@@ -1,0 +1,541 @@
+/* ========== GLOBAL RESET ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ========== BACKGROUND ========== */
+body {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #1f4037, #99f2c8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========== MAIN CARD ========== */
+.card {
+    background: #ffffff;
+    width: 50%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+}
+
+/* Dashboard needs wider card */
+.card.dashboard {
+    width: 700px;
+}
+
+/* ========== HEADINGS ========== */
+.card h1,
+.card h2 {
+    text-align: center;
+    color: #1f4037;
+    margin-bottom: 10px;
+}
+
+.card p {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* ========== FORM ELEMENTS ========== */
+label {
+    font-size: 14px;
+    color: #444;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Login form left alignment */
+.login-form {
+    text-align: left;
+}
+
+.login-form label {
+    display: block;
+    text-align: left;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1f4037;
+}
+
+/* ========== BUTTONS ========== */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1f4037;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #16312b;
+}
+
+/* ========== LINKS ========== */
+.link {
+    margin-top: 18px;
+    text-align: center;
+}
+
+.link a {
+    color: #1f4037;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+/* ========== DASHBOARD LIST ========== */
+.results {
+    margin-top: 25px;
+}
+
+.results h3 {
+    margin-bottom: 10px;
+    color: #1f4037;
+}
+
+.results ul {
+    list-style: none;
+}
+
+.results li {
+    background: #f2f7f5;
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results a {
+    color: #1f4037;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.results a:hover {
+    text-decoration: underline;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .card,
+    .card.dashboard {
+        width: 90%;
+    }
+}
+/* ========== LANDING PAGE (SkillSync) ========== */
+
+.hero {
+    text-align: center;
+    color: #ffffff;
+    max-width: 900px;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 50px;
+}
+
+/* Action cards */
+.action-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.action-card {
+    width: 280px;
+    padding: 30px 25px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #1f4037;
+    background: #ffffff;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.action-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.action-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Hover effect */
+.action-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* Accent borders */
+.action-card.recruiter {
+    border-top: 6px solid #1f4037;
+}
+
+.action-card.student {
+    border-top: 6px solid #2ecc71;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 40px;
+    }
+}
+/* ====== Row for Email and Phone ====== */
+/* ====== Row for Email and Phone ====== */
+.row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.col {
+    flex: 1;
+    min-width: 0;          /* IMPORTANT for equal sizing */
+}
+
+.row input[type="text"] {
+    width: 100%;           /* Force full width */
+}
+/* ---------- Candidate Row ---------- */
+
+.candidate-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#f5f5f5;
+    padding:12px 15px;
+    margin:10px 0;
+    border-radius:8px;
+}
+
+/* name */
+.cand-name{
+    font-weight:600;
+}
+
+/* actions */
+.cand-actions{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+/* Move button */
+.move-btn{
+    background:#1f4037;
+    color:white;
+    padding:6px 12px;
+    border-radius:6px;
+    text-decoration:none;
+}
+
+/* shortlisted text */
+.shortlisted{
+    color:green;
+    font-weight:bold;
+}
+
+/* shortlist link */
+.go-shortlist{
+    display:inline-block;
+    margin-top:15px;
+    text-decoration:none;
+    color:#1f4037;
+    font-weight:600;
+}
+
+/* mail button */
+.mail-btn{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#1f4037;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+}
+.candidate-row:hover{
+    transform:scale(1.01);
+    transition:0.2s;
+}
+/* Candidate card */
+.candidate-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eeeeee;
+    padding: 22px 28px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    gap: 20px;              /* add space between left & right */
+}
+/* Left side */
+.candidate-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;              /* THIS IS KEY */
+}
+
+.cand-name {
+    font-size: 18px;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+/* Resume link */
+.resume-link {
+    background: #214d3c;
+    color: white;
+    padding: 14px 26px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Undo button */
+.undo-btn {
+    background: green;
+    color: white;
+    padding: 14px 26px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Right side */
+.candidate-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Right side button */
+.move-btn {
+    background: #214d3c;
+    color: white;
+    padding: 14px 26px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    white-space: nowrap;   /* prevent text break */
+    flex-shrink: 0;        /* IMPORTANT */
+}
+.search-form button {
+    margin-bottom: 25px;
+}
+.move-btn:hover {
+    opacity: 0.9;
+}
+
+/* Shortlisted text */
+.shortlisted {
+    color: green;
+    font-weight: bold;
+}
+
+/* Go shortlist link */
+.go-shortlist {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #214d3c;
+}
+/* Make all inputs same size */
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    margin-top: 6px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+label {
+    font-weight: 500;
+    display: block;
+    margin-top: 10px;
+}
+.count-text {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1f4037;
+}
+
+.message {
+    color: #b00020;
+    margin-bottom: 12px;
+}
+
+.candidate-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f2f2f2;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.cand-left a {
+    display: inline-block;
+    margin-top: 6px;
+}
+
+.cand-right .move-btn {
+    background: #1f4037;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.match-count {
+    margin: 20px 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f4037;
+}
+
+.match-count span {
+    background: #1f4037;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-left: 6px;
+    font-size: 14px;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+}
+.card {
+    width: 80%;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 300px;
+}
+
+button {
+    padding: 10px 15px;
+    background: #007bff;
+    color: white;
+    border: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+.btn {
+    background: green;
+    color: white;
+    padding: 6px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.shortlisted {
+    color: green;
+    font-weight: bold;
+}
+
+.message {
+    color: red;
+    text-align: center;
+}
+
+.count {
+    font-weight: bold;
+    text-align: center;
+}
+.mail-btn {
+    background-color: #0a66c2;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.mail-btn:hover {
+    background-color: #004182;
+}

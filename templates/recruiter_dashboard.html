@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recruiter Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="card">
+
+    <h2>Recruiter Dashboard</h2>
+    <p>Search candidates by required skill</p>
+
+    <!-- SEARCH FORM -->
+    <form method="POST" class="search-form">
+        <label>Skill</label>
+        <input type="text" name="skill" placeholder="e.g. python, java" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    <!-- MATCH COUNT -->
+    {% if results %}
+    <div class="match-count">
+        Matched Candidates: <span>{{ results|length }}</span>
+    </div>
+    {% endif %}
+
+    <!-- RESULTS -->
+    <div id="results">
+    {% for r in results %}
+    <div class="candidate-card">
+
+        <div class="candidate-left">
+            <span class="cand-name">{{ r[1] }}</span>
+        </div>
+
+        <div class="candidate-right">
+            <a href="/uploads/{{ r[3] }}" target="_blank" class="resume-link">
+                View Resume
+            </a>
+            {% if r[4] == 0 %}
+                <a href="/shortlist_move/{{ r[0] }}" class="move-btn">
+                    Move to Shortlist
+                </a>
+            {% else %}
+                <span class="shortlisted">✔ Shortlisted</span>
+                <a href="/undo_shortlist/{{ r[0] }}" class="undo-btn">Undo</a>
+            {% endif %}
+        </div>
+
+    </div>
+    {% endfor %}
+
+    <a href="/shortlist" class="go-shortlist">
+        Go to Shortlist
+    </a>
+
+</div>
+
+</body>
+</html>

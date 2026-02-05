@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shortlisted Candidates</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="card">
+   <h2>Shortlisted Candidates</h2>
+
+{% for d in data %}
+<div class="candidate-row">
+
+    <div>
+        <b>{{ d[1] }}</b><br>
+        <small>{{ d[2] }}</small>
+    </div>
+
+    <a href="/uploads/{{ d[3] }}" target="_blank">View Resume</a>
+
+</div>
+{% endfor %}
+
+<form action="/send_mail" method="post">
+    <button type="submit" class="mail-btn">Send Mail to All</button>
+</form>
+
+</div>
+</body>
+</html>
