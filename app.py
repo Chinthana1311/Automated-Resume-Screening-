@@ -21,9 +21,13 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 SENDER_EMAIL = "chinthana10ap@gmail.com"
 SENDER_PASSWORD = "tzesnljdpdkurlru"
 
+COMPANY_NAME = "ABC Technologies"
+JOB_TITLE = "Software Developer Intern"
+
 # -------- DATABASE --------
 def get_db():
     return sqlite3.connect("database.db")
+
 
 def create_tables():
     conn = get_db()
@@ -51,6 +55,7 @@ def create_tables():
     conn.commit()
     conn.close()
 
+
 create_tables()
 
 # -------- HOME --------
@@ -72,6 +77,7 @@ def recruiter_login():
             conn.commit()
             conn.close()
 
+            session['skill_input'] = ''
             return redirect("/dashboard")
 
     return render_template("recruiter_login.html")
@@ -86,6 +92,11 @@ def dashboard():
 
     if request.method == "POST":
         skill_input = request.form["skill"].lower()
+        session['skill_input'] = skill_input
+    else:
+        skill_input = request.args.get('skill', session.get('skill_input', ''))
+        if skill_input:
+            session['skill_input'] = skill_input
 
     if skill_input:
         skills = [s.strip() for s in skill_input.split(",")]
@@ -157,19 +168,42 @@ def shortlist():
 def send_mail():
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("SELECT email FROM student WHERE shortlisted = 1")
-    emails = cur.fetchall()
+
+    cur.execute("SELECT name, email FROM student WHERE shortlisted = 1")
+    students = cur.fetchall()
     conn.close()
 
-    for e in emails:
-        msg = MIMEText("Congratulations! You are shortlisted.")
-        msg["Subject"] = "Shortlisted"
-        msg["From"] = SENDER_EMAIL
-        msg["To"] = e[0]
+    for student in students:
+        name = student[0]
+        email = student[1]
 
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(SENDER_EMAIL, SENDER_PASSWORD)
-            server.send_message(msg)
+        mail_body = f"""
+Dear {name},
+
+We are pleased to inform you that you have been shortlisted for the next stage of the selection process for the position of {JOB_TITLE} at {COMPANY_NAME}.
+
+Your profile has been reviewed, and we found your qualifications and skills to be a strong match for the role. Further details regarding the next steps, including the interview schedule, will be shared with you shortly.
+
+Congratulations on being shortlisted. We wish you success in the upcoming process.
+
+If you have any queries, feel free to contact us.
+
+Best Regards,
+Recruitment Team
+{COMPANY_NAME}
+"""
+
+        msg = MIMEText(mail_body)
+        msg["Subject"] = f"Shortlisted for {JOB_TITLE} - {COMPANY_NAME}"
+        msg["From"] = SENDER_EMAIL
+        msg["To"] = email
+
+        try:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+                server.login(SENDER_EMAIL, SENDER_PASSWORD)
+                server.send_message(msg)
+        except Exception as e:
+            print("Error sending mail:", e)
 
     return "Emails sent successfully!"
 
@@ -189,6 +223,7 @@ def student_register():
 
         conn = get_db()
         cur = conn.cursor()
+
         cur.execute("""
             INSERT INTO student(name, email, education, year, resume)
             VALUES (?, ?, ?, ?, ?)
@@ -224,7 +259,7 @@ def student_register():
 
     return render_template("student_register.html")
 
-# -------- DOWNLOAD --------
+# -------- DOWNLOAD RESUME --------
 @app.route("/uploads/<filename>")
 def download(filename):
     return send_from_directory(UPLOAD_FOLDER, filename)
