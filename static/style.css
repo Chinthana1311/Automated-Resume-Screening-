@@ -6,6 +6,36 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ========== NAVIGATION ========== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent; /* Removed blue box */
+    color: #c0c0c0; /* Silver text color */
+    padding: 15px 20px; /* Increased padding for more prominence */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+.nav-left a,
+.nav-right a {
+    color: #ffffff; /* Bright white text color */
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 600; /* Increased font weight */
+    font-size: 16px; /* Slightly larger font */
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+    text-decoration: underline;
+    color: #f0f0f0; /* Slightly off-white hover color for feedback */
+}
+
 /* ========== BACKGROUND ========== */
 body {
     min-height: 100vh;
@@ -13,6 +43,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 60px; /* Adjust for fixed nav */
 }
 
 /* ========== MAIN CARD ========== */
@@ -54,6 +85,7 @@ label {
 
 input[type="text"],
 input[type="password"],
+input[type="email"],
 input[type="file"] {
     width: 100%;
     padding: 12px;
